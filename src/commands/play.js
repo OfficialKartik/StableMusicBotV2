@@ -3,10 +3,11 @@ const player = require('../player/musicPlayer');
 module.exports = {
   name: 'play',
   async execute(message, args) {
-    if (!args[0]) {
-      return message.reply('Provide a YouTube URL.');
+    if (!args.length) {
+      return message.reply('Provide a YouTube URL or search query.');
     }
 
-    await player.play(message, args[0]);
+    const query = args.join(' ');
+    await player.play(message, query);
   }
 };
